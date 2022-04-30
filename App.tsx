@@ -12,6 +12,7 @@ import Movilidad from "./Movilidad";
 import Configuracion from "./Configuración";
 import CambiarDatos from "./CambiarDatos";
 import Logout from "./Logout";
+import LoginApp from "./Login_App";
 
 const Stack = createNativeStackNavigator();
 
@@ -34,6 +35,8 @@ const App = () => {
         <Stack.Screen name="Logout" component={Logout} options={{title: 'Logout'}} />
         <Stack.Screen name="Movilidad" component={Movilidad} options={{title: 'Movilidad'}} />
         <Stack.Screen name="Configuracion" component={Configuracion} options={{title: 'Configuración'}} />
+        <Stack.Screen name="LoginApp" component={LoginApp} options={{title: 'Iniciar'}} />
+
       </Stack.Navigator>
     </NavigationContainer>
   )

@@ -1,35 +1,41 @@
 import { useNavigation } from "@react-navigation/native";
 import React from "react";
-import { Button } from "react-native";
+import { Button, Dimensions, ImageBackground, Touchable, TouchableOpacity } from "react-native";
 import { Text, View } from "react-native";
 import CambiarDatos from "./CambiarDatos";
 
 const IniciarSesion = ( ) => {
     const navigation = useNavigation();
     return (
-        <View>
+        <View style={styles.body}>
+            <Text style={styles.H1}>Bienvenido a CoronaApp</Text>
             
-            <Button 
-           
-                title="Registrarse"
-                color="#2196F3"
+            <ImageBackground 
+                source={require('./img/cov.png')}
+                style={{height: Dimensions.get('screen').height / 2.5 }}
+            >
+
+            </ImageBackground>
+
+            <TouchableOpacity 
+                style={styles.button}
+                onPress={ () => {
+                    navigation.navigate('LoginApp')
+                }}
+            >
+                <Text style={{color: 'white'}}>Iniciar Sesión</Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity 
+                style={[styles.button, {backgroundColor: '#C4DDFF'}]}
                 onPress={ () => {
                     navigation.navigate('Registro')
-                }}>
-            </Button>
-            <Button title="Home Administrador"
+                }}
+            >
+                <Text style={{color: 'black'}}>Registrarse</Text>
+            </TouchableOpacity>
 
-                color="#f194ff"
-                onPress={ () => {
-                    navigation.navigate('HomeAdministrador')
-                }}>
-            </Button>
-            <Button title="Home Estudiante"
-                color="#2196F3"
-                onPress={ () => {
-                    navigation.navigate('HomeEstudiante')
-                }}>
-            </Button>
+           
         </View>
     );
 }
@@ -37,6 +43,28 @@ const IniciarSesion = ( ) => {
 import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
+    body: {
+        flex: 1,
+        justifyContent: 'space-evenly'
+    },
+
+    H1: {
+        textAlign: 'center',
+        fontSize: 20,
+        fontWeight: 'bold',
+        color: 'black'
+    },
+    button: {
+        backgroundColor: '#7FB5FF',
+        color: 'white',
+        alignItems: 'center',
+        justifyContent: 'center',
+        height: 50,
+        borderRadius: 20
+    },
+    textButton: {
+        color: 'white'
+    },
     button_margin: {
         marginTop: 16
       }

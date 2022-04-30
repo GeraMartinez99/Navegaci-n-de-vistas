@@ -1,11 +1,32 @@
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useNavigation } from "@react-navigation/native";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Button } from "react-native";
 import { Text, View } from "react-native";
 const HomeEstudiante = ( ) => {
     const navigation = useNavigation();
+    const [matricula, setMatricula] = useState('');
+
+    useEffect( () => {
+        getData();
+    },[]);
+
+    const getData = () => {
+        try {
+            AsyncStorage.getItem('UserData').then(value => {
+                if( value != null ) {
+                    let user = JSON.parse(value);
+                    setMatricula(user.Matricula);
+                }
+            })  
+        } catch (error) {
+            console.log(error)
+        }
+   
+    };
     return (
         <View>
+            <Text>Hola! Tu matricula es: {matricula}</Text>
             <Button title="Ver comunicados" 
                 onPress={ () => {
                     navigation.navigate('VerComunicados')
